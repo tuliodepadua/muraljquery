@@ -4,69 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <script
       src="https://code.jquery.com/jquery-2.2.4.min.js"
       integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
       crossorigin="anonymous"
     ></script>
-
-    <style>
-      #menuMural {
-      }
-
-      #menu {
-        list-style: none;
-        padding: 0px;
-      }
-      #menu li {
-        display: inline-block;
-        padding: 5px 15px;
-        border-radius: 5px;
-        margin: 1px;
-        cursor: pointer;
-      }
-
-      #corpo {
-        background: #ccc;
-        width: 100%;
-      }
-
-      .postit {
-        display: inline-block;
-        padding: 5px 15px;
-        border-radius: 5px;
-        margin: 1px;
-        cursor: pointer;
-      }
-    </style>
   </head>
   <body>
     <div id="menuMural">
-      <ul id="menu"></ul>
+      <ul id="top"></ul>
     </div>
     <div id="corpo"></div>
+    <div id="left"></div>
+
+    <div class="modal">
+      <div class="close">x</div>
+      <div class="header">asdasd</div>
+      <div class="message">asdasdsa das dasd sads a</div>
+    </div>
+    <div class="cover"></div>
 
     <script>
       const config = {
         menu: "menu",
         corpo: "corpo",
       };
+      const postitArray = [];
       const itemsMural = [
         {
           label: "Btn1",
           ref: "Btn1",
           bgColor: "#060",
           textColor: "#fff",
+          position: "top",
           items: [
             {
               label: "item 1",
               bgColor: "#000",
               textColor: "#fff",
+              modal: {
+                title: "Titulo 1",
+                message: "Corpo 1",
+              },
             },
             {
               label: "item 2",
               bgColor: "#000",
               textColor: "#fff",
+              modal: {
+                title: "Titulo 2",
+                message: "Corpo 2",
+              },
             },
           ],
         },
@@ -75,16 +64,52 @@
           ref: "Btn2",
           bgColor: "#060",
           textColor: "#fff",
+          position: "top",
           items: [
             {
               label: "item 1",
               bgColor: "#000",
               textColor: "#fff",
+              modal: {
+                title: "Titulo 3",
+                message: "Corpo 3",
+              },
             },
             {
               label: "item 2",
               bgColor: "#000",
               textColor: "#fff",
+              modal: {
+                title: "Titulo 4",
+                message: "Corpo 4",
+              },
+            },
+          ],
+        },
+        {
+          label: "Btn3",
+          ref: "Btn3",
+          bgColor: "#0cc",
+          textColor: "#fff",
+          position: "left",
+          items: [
+            {
+              label: "item 1",
+              bgColor: "#000",
+              textColor: "#fff",
+              modal: {
+                title: "Titulo 3",
+                message: "Corpo 3",
+              },
+            },
+            {
+              label: "item 2",
+              bgColor: "#000",
+              textColor: "#fff",
+              modal: {
+                title: "Titulo 4",
+                message: "Corpo 4",
+              },
             },
           ],
         },
@@ -92,13 +117,52 @@
 
       for (const itemMural of itemsMural) {
         $(`#${config.menu}`).append(
-          `<li style="color:${itemMural.textColor}; background:${itemMural.bgColor};">${itemMural.label}</li>`
+          `<li class="itemMenu" ref="${itemMural.ref}" style="color:${itemMural.textColor}; background:${itemMural.bgColor};">${itemMural.label}</li>`
         );
         for (const item of itemMural.items) {
-          $(`#${config.corpo}`).append(
-            `<div class="postit" style="color:${item.textColor}; background:${item.bgColor};">${item.label}</div>`
+          postitArray.push(
+            `<div class="postit" ref="${itemMural.ref}" style="color:${item.textColor}; background:${item.bgColor};">${item.label}</div>`
           );
         }
+      }
+
+      postitArray.sort(randOrd);
+
+      for (const postit of postitArray) {
+        $(`#${config.corpo}`).append(postit);
+      }
+
+      $(".itemMenu").click(function (e) {
+        const ref = $(this).attr("ref");
+        $(".postit").addClass("alpha");
+        $(`.postit[ref="${ref}"]`).removeClass("alpha");
+      });
+
+      $(".postit").click(function (e) {
+        if (!$(this).hasClass("alpha")) {
+          const ref = $(this).attr("ref");
+          const label = $(this).html();
+          selectItem(ref, label);
+        }
+      });
+
+      $(".modal .close").click(function (e) {
+        console.log("Teste");
+        $(".modal").removeClass("active");
+        $(".cover").removeClass("active");
+      });
+
+      function randOrd() {
+        return Math.round(Math.random()) - 0.5;
+      }
+
+      function selectItem(ref, label) {
+        const { items } = itemsMural.find((e) => e.ref === ref);
+        const { modal } = items.find((e) => e.label === label);
+        $(".header").html(modal.title);
+        $(".message").html(modal.message);
+        $(".modal").addClass("active");
+        $(".cover").addClass("active");
       }
     </script>
   </body>

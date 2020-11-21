@@ -1,0 +1,74 @@
+#menuMural {
+}
+
+#menu {
+  list-style: none;
+  padding: 0px;
+}
+#menu li {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin: 1px;
+  cursor: pointer;
+}
+
+#corpo {
+  background: #ccc;
+  width: 100%;
+}
+
+.postit {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin: 1px;
+  cursor: pointer;
+}
+.alpha {
+  opacity: 0.5;
+  cursor: initial;
+}
+
+.cover.active {
+  position: absolute;
+  z-index: 9999;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background: #000;
+}
+.modal {
+  position: absolute;
+  z-index: 99991;
+  top: -100%;
+}
+.modal.active {
+  position: absolute;
+  z-index: 99991;
+  top: calc(50% - 100px);
+  left: calc(50% - 200px);
+  display: inline-block;
+  width: 400px;
+  min-height: 100px;
+  background: #fff;
+  border-radius: 5px;
+}
+.modal .header {
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  text-transform: uppercase;
+  position: relative;
+}
+.modal .close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+  z-index: 2;
+}
+.modal .message {
+  padding: 5px;
+}
