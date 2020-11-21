@@ -1,10 +1,7 @@
-#menuMural {
-  background-color: #000; }
-
-#menu {
+.menu {
   list-style: none;
   padding: 0px; }
-  #menu li {
+  .menu li {
     display: inline-block;
     padding: 5px 15px;
     border-radius: 5px;

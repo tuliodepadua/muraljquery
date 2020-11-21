@@ -12,9 +12,9 @@
     ></script>
   </head>
   <body>
-    <div id="menuMural">
-      <ul id="top"></ul>
-    </div>
+    <ul id="menu-top" class="menu"></ul>
+    <ul id="menu-left"></ul>
+
     <div id="corpo"></div>
     <div id="left"></div>
 
@@ -116,7 +116,7 @@
       ];
 
       for (const itemMural of itemsMural) {
-        $(`#${config.menu}`).append(
+        $(`#${config.menu}-${itemMural.position}`).append(
           `<li class="itemMenu" ref="${itemMural.ref}" style="color:${itemMural.textColor}; background:${itemMural.bgColor};">${itemMural.label}</li>`
         );
         for (const item of itemMural.items) {
@@ -147,7 +147,11 @@
       });
 
       $(".modal .close").click(function (e) {
-        console.log("Teste");
+        $(".modal").removeClass("active");
+        $(".cover").removeClass("active");
+      });
+
+      $(".cover").click(function (e) {
         $(".modal").removeClass("active");
         $(".cover").removeClass("active");
       });
