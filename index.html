@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      #menuMural {
+      }
+
+      #menu {
+        list-style: none;
+        padding: 0px;
+      }
+      #menu li {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 5px;
+        margin: 1px;
+        cursor: pointer;
+      }
+
+      #corpo {
+        background: #ccc;
+        width: 100%;
+      }
+
+      .postit {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 5px;
+        margin: 1px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="menuMural">
+      <ul id="menu"></ul>
+    </div>
+    <div id="corpo"></div>
+
+    <script>
+      const config = {
+        menu: "menu",
+        corpo: "corpo",
+      };
+      const itemsMural = [
+        {
+          label: "Btn1",
+          ref: "Btn1",
+          bgColor: "#060",
+          textColor: "#fff",
+          items: [
+            {
+              label: "item 1",
+              bgColor: "#000",
+              textColor: "#fff",
+            },
+            {
+              label: "item 2",
+              bgColor: "#000",
+              textColor: "#fff",
+            },
+          ],
+        },
+        {
+          label: "Btn2",
+          ref: "Btn2",
+          bgColor: "#060",
+          textColor: "#fff",
+          items: [
+            {
+              label: "item 1",
+              bgColor: "#000",
+              textColor: "#fff",
+            },
+            {
+              label: "item 2",
+              bgColor: "#000",
+              textColor: "#fff",
+            },
+          ],
+        },
+      ];
+
+      for (const itemMural of itemsMural) {
+        $(`#${config.menu}`).append(
+          `<li style="color:${itemMural.textColor}; background:${itemMural.bgColor};">${itemMural.label}</li>`
+        );
+        for (const item of itemMural.items) {
+          $(`#${config.corpo}`).append(
+            `<div class="postit" style="color:${item.textColor}; background:${item.bgColor};">${item.label}</div>`
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
