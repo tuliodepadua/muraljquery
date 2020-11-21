@@ -1,34 +1,30 @@
 #menuMural {
-}
+  background-color: #000; }
 
 #menu {
   list-style: none;
-  padding: 0px;
-}
-#menu li {
-  display: inline-block;
-  padding: 5px 15px;
-  border-radius: 5px;
-  margin: 1px;
-  cursor: pointer;
-}
+  padding: 0px; }
+  #menu li {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin: 1px;
+    cursor: pointer; }
 
 #corpo {
   background: #ccc;
-  width: 100%;
-}
+  width: 100%; }
 
 .postit {
   display: inline-block;
   padding: 5px 15px;
   border-radius: 5px;
   margin: 1px;
-  cursor: pointer;
-}
+  cursor: pointer; }
+
 .alpha {
   opacity: 0.5;
-  cursor: initial;
-}
+  cursor: initial; }
 
 .cover.active {
   position: absolute;
@@ -38,13 +34,13 @@
   width: 100%;
   height: 100%;
   opacity: 0.5;
-  background: #000;
-}
+  background: #000; }
+
 .modal {
   position: absolute;
   z-index: 99991;
-  top: -100%;
-}
+  top: -100%; }
+
 .modal.active {
   position: absolute;
   z-index: 99991;
@@ -54,21 +50,20 @@
   width: 400px;
   min-height: 100px;
   background: #fff;
-  border-radius: 5px;
-}
+  border-radius: 5px; }
+
 .modal .header {
   padding: 5px;
   border-bottom: 1px solid #ccc;
   text-transform: uppercase;
-  position: relative;
-}
+  position: relative; }
+
 .modal .close {
   position: absolute;
   right: 5px;
   top: 5px;
   cursor: pointer;
-  z-index: 2;
-}
+  z-index: 2; }
+
 .modal .message {
-  padding: 5px;
-}
+  padding: 5px; }
